@@ -21,7 +21,7 @@ while True:
     ret, frame = videoCap.read()
     if not ret:
         continue
-    results = yolo.track(frame, stream=True)
+    results = yolo.track(frame, stream=True,verbose = False)
 
 
     for result in results:
