@@ -1,0 +1,28 @@
+# Use an official Python image as the base image
+FROM python:3.9-slim
+
+# Set working directory in the container
+WORKDIR /app
+
+# Install system dependencies required for opencv, picamera2 and other libraries
+RUN apt-get update && apt-get install -y \
+    libopencv-dev \
+    libatlas-base-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libv4l-dev \
+    libgl1-mesa-glx \
+    libcamera-dev \
+    libcamera-apps \
+    python3-picamera2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install the Python dependencies using pip
+RUN pip install --no-cache-dir ultralytics cv2
+
+# Copy the rest of the code into the container
+COPY . /app
+
+
+# Command to run the Python program (adjust this to your script)
+CMD ["python", "main.py"]
