@@ -3,7 +3,7 @@ import json
 from ultralytics import YOLO
 
 # Load marked spots from JSON
-with open("markers.json", "r") as f:
+with open("parking_spots.json", "r") as f:
     regions = json.load(f)["regions"]
 
 # Function to check if a detected object's bounding box is within a region from the JSON
